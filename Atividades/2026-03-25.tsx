@@ -1,11 +1,11 @@
-import { View, Text, StyleSheet, useWindowDimensions, Image } from "react-native";
+import { View, ScrollView, Text, StyleSheet, useWindowDimensions, Image } from "react-native";
 
 function App() {
     const { width } = useWindowDimensions();
     const menuMobile = width <= 425;
 
     return (
-        <View style={styles.tela}>
+        <ScrollView style={styles.tela} contentContainerStyle={{ gap: 12 }} showsVerticalScrollIndicator={false}>
             {/* TOPO */}
             <View style={styles.topo}>
                 <Text style={styles.txt}>topo</Text>
@@ -26,35 +26,55 @@ function App() {
                 <View style={styles.lista1}>
                     <Text style={styles.titulo}>Lista 1</Text>
 
-                    <View style={[styles.card1, { backgroundColor: "red" }]}>
-                        <Text style={styles.txt}>Card1</Text>
+                    <View style={styles.cardsContainer}>
+                        <View style={[styles.card1, { backgroundColor: "#ff9efa" }]}>
+                            <Text style={styles.txt}>Card1</Text>
+                        </View>
+                        <View style={[styles.card1, { backgroundColor: "#ff9efa" }]}>
+                            <Text style={styles.txt}>Card2</Text>
+                        </View>
+                        <View style={[styles.card1, { backgroundColor: "#ff9efa" }]}>
+                            <Text style={styles.txt}>Card3</Text>
+                        </View>
+                        <View style={[styles.card1, { backgroundColor: "#ff9efa" }]}>
+                            <Text style={styles.txt}>Card4</Text>
+                        </View>
                     </View>
-                    <View style={[styles.card1, { backgroundColor: "blue" }]}>
-                        <Text style={styles.txt}>Card2</Text>
-                    </View>
-                    <View style={[styles.card1, { backgroundColor: "green" }]}>
-                        <Text style={styles.txt}>Card3</Text>
-                    </View>
-                    <View style={[styles.card1, { backgroundColor: "yellow" }]}>
-                        <Text style={styles.txt}>Card4</Text>
-                    </View>
+                </View>
 
+                <View style={styles.lista1}>
+                    <Text style={styles.titulo}>Lista 1</Text>
+
+                    <View style={styles.cardsContainer}>
+                        <View style={[styles.card1, { backgroundColor: "#ff9efa" }]}>
+                            <Text style={styles.txt}>Card1</Text>
+                        </View>
+                        <View style={[styles.card1, { backgroundColor: "#ff9efa" }]}>
+                            <Text style={styles.txt}>Card2</Text>
+                        </View>
+                        <View style={[styles.card1, { backgroundColor: "#ff9efa" }]}>
+                            <Text style={styles.txt}>Card3</Text>
+                        </View>
+                        <View style={[styles.card1, { backgroundColor: "#ff9efa" }]}>
+                            <Text style={styles.txt}>Card4</Text>
+                        </View>
+                    </View>
                 </View>
 
                 <View style={styles.lista2}>
                     <Text style={styles.titulo}>Lista 2</Text>
 
                     <View style={styles.cardsContainer}>
-                        <View style={[styles.card2, { backgroundColor: "red" }]}>
+                        <View style={[styles.card2, { backgroundColor: "#ff9efa" }]}>
                             <Text style={styles.txt}>Card1</Text>
                         </View>
-                        <View style={[styles.card2, { backgroundColor: "blue" }]}>
+                        <View style={[styles.card2, { backgroundColor: "#ff9efa" }]}>
                             <Text style={styles.txt}>Card2</Text>
                         </View>
-                        <View style={[styles.card2, { backgroundColor: "green" }]}>
+                        <View style={[styles.card2, { backgroundColor: "#ff9efa" }]}>
                             <Text style={styles.txt}>Card3</Text>
                         </View>
-                        <View style={[styles.card2, { backgroundColor: "yellow" }]}>
+                        <View style={[styles.card2, { backgroundColor: "#ff9efa" }]}>
                             <Text style={styles.txt}>Card4</Text>
                         </View>
                     </View>
@@ -62,32 +82,34 @@ function App() {
             </View>
 
             <View style={[styles.menu, { display: menuMobile ? "flex" : "none" }]}>
-                <View style={[styles.menuItem, { backgroundColor: "red" }]}>
+                <View style={[styles.menuItem, { backgroundColor: "#ff9efa" }]}>
                     <Text style={styles.txt}>menuItem1</Text>
                 </View>
-                <View style={[styles.menuItem, { backgroundColor: "blue" }]}>
+                <View style={[styles.menuItem, { backgroundColor: "#ff9efa" }]}>
                     <Text style={styles.txt}>menuItem2</Text>
                 </View>
-                <View style={[styles.menuItem, { backgroundColor: "green" }]}>
+                <View style={[styles.menuItem, { backgroundColor: "#ff9efa" }]}>
                     <Text style={styles.txt}>menuItem3</Text>
                 </View>
             </View>
-        </View>
+        </ScrollView>
     );
 }
 
 const styles = StyleSheet.create({
     tela: {
-        flex: 1,
-        backgroundColor: "#F1F5F9",
-        padding: 25,
+        backgroundColor: "#ffffff",
+        margin: 25,
+        marginBottom: 50,
+        marginTop: 50,
+        display: "flex",
+        flexDirection: "column",
     },
     topo: {
         height: 70,
-        backgroundColor: "#93C5FD",
+        backgroundColor: "#bd4aff",
         justifyContent: "center",
         alignItems: "center",
-        marginBottom: 12,
         borderRadius: 10,
     },
     banner: {
@@ -97,7 +119,7 @@ const styles = StyleSheet.create({
     img: {
         width: "100%",
         height: "100%",
-
+        borderRadius: 10,
     },
     txt: {
         fontWeight: "bold",
@@ -114,21 +136,19 @@ const styles = StyleSheet.create({
         backgroundColor: "#d266f3ff",
         borderRadius: 10,
         padding: 12,
-        marginBottom: 12,
     },
     lista1: {
-        flex: 1,
         backgroundColor: "#ec8affff",
         borderRadius: 10,
         padding: 12,
         marginBottom: 12,
     },
 
-    cardsContainer:{
-        flex:1,
+    cardsContainer: {
         flexDirection: "row",
         flexWrap: "wrap",
         justifyContent: "space-between",
+        gap: 12,
     },
 
     lista2: {
@@ -148,7 +168,8 @@ const styles = StyleSheet.create({
     // },
 
     card1: {
-        width: "40%",
+        maxWidth: "45%",
+        width: "100%",
         height: 40,
         borderRadius: 10,
         justifyContent: "center",
@@ -165,7 +186,7 @@ const styles = StyleSheet.create({
     // MENU MOBILE
     menu: {
         height: 65,
-        backgroundColor: "#CBD5E1",
+        backgroundColor: "#bb28ff",
         borderRadius: 10,
         flexDirection: "row",
         justifyContent: "space-around",
