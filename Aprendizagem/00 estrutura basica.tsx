@@ -1,3 +1,5 @@
+// npm install -g expo-cli@latest
+
 import { View, Text, StyleSheet } from "react-native";
 
 function App(){
